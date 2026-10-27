@@ -1,0 +1,69 @@
+.record-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-top: 1px solid var(--line);
+  padding-top: 32px;
+}
+
+.record-card__title {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(20px, 2.2vw, 28px);
+  letter-spacing: -0.02em;
+}
+
+.record-card__body {
+  display: flex;
+  align-items: flex-end;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.record-card__preview {
+  position: relative;
+  width: min(360px, 100%);
+  background: var(--surface);
+  outline: 1px solid var(--line);
+}
+
+.record-card__preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.record-card__status {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  text-align: center;
+}
+
+.record-card__download {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 20px;
+  border: 1px solid var(--line-strong);
+  color: var(--text-1);
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.record-card__download .meta {
+  color: inherit;
+  opacity: 0.7;
+  text-transform: none; /* show the real file name */
+}
+
+.record-card__download:hover {
+  background: var(--text-1);
+  border-color: var(--text-1);
+  color: var(--bg);
+}

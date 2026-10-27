@@ -1,0 +1,45 @@
+/* ── Deletion log ───────────────────────────────────── */
+
+.deletion-log {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.deletion-log h2 {
+  font-weight: 400;
+}
+
+.deletion-log__empty {
+  color: var(--text-4);
+  font-size: 13px;
+}
+
+.deletion-log__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.deletion-log__list li {
+  display: grid;
+  grid-template-columns: 2.2em 3.6em minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.deletion-log__list .meta {
+  color: var(--text-4);
+}
+
+.deletion-log__title {
+  font-size: 13px;
+  color: var(--text-3);
+  text-decoration-color: var(--text-4);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

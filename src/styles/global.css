@@ -1,0 +1,122 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-1);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  word-break: keep-all;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+:focus-visible {
+  outline: 1px solid var(--focus);
+  outline-offset: 4px;
+}
+
+/* Small archive-style metadata */
+.meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* Small Korean side notes: same quietness as .meta, without the mono letter-spacing */
+.note {
+  font-size: 12px;
+  letter-spacing: 0.01em;
+  color: var(--text-4);
+}
+
+.text-button {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line-strong);
+  color: var(--text-2);
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.text-button:hover:not(:disabled) {
+  color: var(--text-1);
+  border-color: var(--text-1);
+}
+
+.text-button:disabled {
+  opacity: 0.4;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.error-screen {
+  min-height: 100dvh;
+  padding: var(--gutter);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.error-screen__title {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(28px, 5vw, 48px);
+}
+
+.error-screen__body {
+  color: var(--text-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    /* Without this, infinite animations (the tremble) would flicker every frame */
+    animation-iteration-count: 1 !important;
+  }
+}

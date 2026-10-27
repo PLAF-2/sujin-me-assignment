@@ -1,0 +1,23 @@
+:root {
+  --bg: #0a0a0a;
+  --surface: #141414;
+  --surface-raised: #1c1c1c;
+  --line: #2a2a2a;
+  --line-strong: #444;
+
+  --text-1: #f2f2f2;
+  --text-2: #c4c4c4;
+  --text-3: #969696;
+  --text-4: #808080; /* lowest text grey: 5.0:1 on --bg, 4.7:1 on --surface */
+
+  --focus: #f2f2f2;
+
+  --font-serif: 'Noto Serif KR', 'Nanum Myeongjo', serif;
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Consolas, monospace;
+
+  --gutter: clamp(16px, 4vw, 48px);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  color-scheme: dark;
+}

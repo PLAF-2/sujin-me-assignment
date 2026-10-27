@@ -1,0 +1,207 @@
+.intro {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 100dvh;
+  padding: var(--gutter);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 48px;
+}
+
+.intro__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.intro__body {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 4vw, 44px);
+  max-width: 1100px;
+}
+
+.intro__title {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(40px, 8.4vw, 116px);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.intro__title-line {
+  display: block;
+}
+
+.intro__letter {
+  display: inline-block;
+}
+
+/* Second line is set off to the right, like a misaligned record */
+.intro__title-line + .intro__title-line {
+  padding-left: clamp(0px, 9vw, 160px);
+  color: var(--text-2);
+}
+
+.intro__lede {
+  max-width: 34em;
+  font-size: clamp(15px, 1.5vw, 18px);
+  color: var(--text-2);
+  line-height: 1.85;
+}
+
+.intro__start {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 48px;
+  padding: 12px 22px 12px 24px;
+  border: 1px solid var(--line-strong);
+  color: var(--text-1);
+  letter-spacing: 0.04em;
+  transition: background-color 0.4s var(--ease-out), border-color 0.4s, color 0.4s;
+}
+
+.intro__start svg {
+  transition: transform 0.4s var(--ease-out);
+}
+
+.intro__start:hover {
+  background: var(--text-1);
+  border-color: var(--text-1);
+  color: var(--bg);
+}
+
+.intro__start:hover svg {
+  transform: translateX(4px);
+}
+
+.intro__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
+
+.intro__footer dl {
+  display: flex;
+  gap: 32px;
+  margin: 0;
+}
+
+.intro__footer dl div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.intro__footer dd {
+  margin: 0;
+  color: var(--text-1);
+  font-size: 14px;
+}
+
+.intro__footer p {
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--text-4);
+  max-width: 28em;
+}
+
+/* Short screens (landscape phones): keep the title, the sentence and the start button on the first screen */
+@media (max-height: 520px) {
+  .intro {
+    gap: 20px;
+  }
+
+  .intro__body {
+    gap: 16px;
+  }
+
+  .intro__title {
+    font-size: clamp(28px, 9vh, 56px);
+  }
+
+  .intro__lede {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .intro__start {
+    min-height: 44px;
+    padding-block: 8px;
+  }
+}
+
+/* ── Ghosts: the fragments, faintly, before they are named ── */
+
+.intro-ghosts {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.intro-ghost {
+  position: absolute;
+  left: calc(var(--x) * 0.9% + 4%);
+  top: calc(var(--y) * 0.8% + 12%);
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(13px, 1.4vw, 20px);
+  white-space: nowrap;
+  color: var(--text-1);
+  opacity: 0.07;
+  animation: ghost-drift var(--drift-duration) var(--drift-delay) ease-in-out infinite;
+}
+
+@keyframes ghost-drift {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 10px -8px; }
+}
+
+/* The strike runs across the name, then the name fades, then (on the next cycle) it is back */
+.intro-ghost::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 55%;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+}
+
+.intro-ghost[data-erasing] {
+  animation:
+    ghost-drift var(--drift-duration) var(--drift-delay) ease-in-out infinite,
+    ghost-erase 3.2s ease-in-out forwards;
+}
+
+.intro-ghost[data-erasing]::after {
+  animation: ghost-strike 0.9s 0.2s ease-out forwards;
+}
+
+@keyframes ghost-strike {
+  to { width: 100%; }
+}
+
+@keyframes ghost-erase {
+  0%, 30% { opacity: 0.16; filter: blur(0); }
+  70% { opacity: 0; filter: blur(4px); }
+  100% { opacity: 0; filter: blur(4px); }
+}
+
+@media (max-width: 699px) {
+  .intro-ghost {
+    font-size: 12px;
+    opacity: 0.05;
+  }
+}
